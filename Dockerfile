@@ -1,3 +1,6 @@
+# docker build --rm --tag nox .
+# docker run -v nox/:/config -p 6689:6689 --rm nox
+
 FROM debian:stretch
 RUN apt-get update && \
         apt-get install curl tar -y
@@ -11,5 +14,4 @@ RUN curl -o \
 EXPOSE 6689
 VOLUME /config
 
-RUN echo "hello"
 CMD ["/opt/noxbit/STM-Hypervisor","-config=/config/noxbit.cfg"]
